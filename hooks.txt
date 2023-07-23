@@ -1,0 +1,55 @@
+mlx_hook:
+
+is a general event handler that allows you to capture various events on the window, such as keyboard input,
+mouse events, and window-related events (e.g., close window, expose, etc.).
+It provides more flexibility because you can specify different event types and their corresponding callback 
+functions to handle those events.
+You can use mlx_hook to capture and process a wide range of events, making it suitable for more complex 
+applications where you need to handle multiple types of events simultaneously.
+
+int mlx_hook(void *win_ptr, int event_type, int event_mask, int (*funct_ptr)(), void *param);
+Save to grepper
+win_ptr: The window identifier (window pointer) to which the event hook is attached. 
+  It's the window on which the events will be captured.
+event_type: An integer representing the type of event to be captured. For example, KeyPress (key press), 
+  KeyRelease (key release), ButtonPress (mouse button press), ButtonRelease (mouse button release), etc.
+event_mask: An event mask that specifies which events should be captured. It's a bitwise OR combination 
+of various event masks defined by MiniLibX, like KeyPressMask, KeyReleaseMask, ButtonPressMask, etc. 
+  This parameter determines the specific events to monitor.
+funct_ptr: A pointer to the callback function that will be executed when the specified event occurs. 
+  The callback function should have a specific signature depending on the event type 
+(e.g., int my_callback(int keycode, void *param)).
+param: A pointer to a user-defined parameter that can be passed to the callback function. 
+  It allows you to pass additional data to your callback.
+
+
+mlx_key_hook:
+
+is specifically designed for capturing keyboard events. It allows you to set a callback 
+function that will be triggered whenever a key is pressed or released.
+It simplifies the process of handling keyboard input by focusing solely on key events and their associated actions.
+When using mlx_key_hook, you provide a single callback function that will be called whenever a key is pressed or released. 
+  This makes it convenient for games and applications where you primarily want to handle keyboard input.
+int mlx_key_hook(void *win_ptr, int (*funct_ptr)(), void *param);
+
+win_ptr: The window identifier (window pointer) to which the key hook is attached.
+  It's the window on which the keyboard events will be captured.
+funct_ptr: A pointer to the callback function that will be executed when a key event occurs 
+(key press or key release). The callback function should have the following signature: 
+int my_callback(int keycode, void *param), where keycode represents the key that was pressed 
+or released, and param is the user-defined parameter passed to the callback.
+param: A pointer to a user-defined parameter that can be passed to the callback function. 
+  It allows you to pass additional data to your callback.
+Explanation:
+Both mlx_hook and mlx_key_hook are used to register event hooks that capture events occurring 
+on the specified window. When an event of the specified type occurs, the corresponding callback function is executed.
+
+With mlx_hook, you can capture various types of events, such as keyboard input, mouse events, 
+  window-related events, etc. The event_type parameter specifies the type of event to be captured, 
+and the event_mask parameter determines which events are monitored.
+
+With mlx_key_hook, you can specifically capture keyboard events (key press or key release). 
+The callback function should have a specific signature to handle key events.
+
+In both cases, the param parameter allows you to pass additional data to your callback function, 
+providing extra context or information for event handling.
