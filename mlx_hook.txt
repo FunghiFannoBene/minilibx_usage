@@ -1,0 +1,26 @@
+La funzione mlx_hook() della libreria MiniLibX viene utilizzata per registrare un hook per un evento. I parametri della funzione sono:
+
+win_ptr: un puntatore alla finestra su cui viene registrato il hook.
+event_type: il tipo di evento per il quale si desidera registrare il hook.
+event_mask: una maschera che specifica gli eventi che si desidera ignorare.
+funct_ptr: un puntatore a una funzione che viene eseguita quando viene generato l'evento.
+param: un parametro che viene passato alla funzione di hook.
+La funzione mlx_hook() restituisce un intero che indica se il hook è stato registrato con successo o meno. Se il hook è stato registrato con successo, la funzione restituisce un valore maggiore di zero. In caso contrario, la funzione restituisce un valore negativo.
+
+Ecco un esempio di come utilizzare la funzione mlx_hook() per registrare un hook per l'evento KEY_PRESS:
+
+C
+int my_key_press_handler(int key, void *param) {
+  // Controlla quale tasto è stato premuto.
+  if (key == KEY_ESC) {
+    // Chiude la finestra.
+    mlx_destroy_window(win_ptr);
+  }
+
+  return 0;
+}
+
+// Registra un hook per l'evento KEY_PRESS.
+mlx_hook(win_ptr, KEY_PRESS, 0, my_key_press_handler, NULL);
+Utilizza il codice con cautela. Scopri di più
+Quando un utente preme un tasto, la funzione my_key_press_handler() viene eseguita. La funzione controlla quale tasto è stato premuto e, se è stato premuto il tasto ESC, chiude la finestra.
