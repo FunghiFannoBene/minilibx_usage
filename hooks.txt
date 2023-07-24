@@ -8,7 +8,9 @@ You can use mlx_hook to capture and process a wide range of events, making it su
 applications where you need to handle multiple types of events simultaneously.
 
 int mlx_hook(void *win_ptr, int event_type, int event_mask, int (*funct_ptr)(), void *param);
-Save to grepper
+
+
+
 win_ptr: The window identifier (window pointer) to which the event hook is attached. 
   It's the window on which the events will be captured.
 event_type: An integer representing the type of event to be captured. For example, KeyPress (key press), 
@@ -30,6 +32,8 @@ function that will be triggered whenever a key is pressed or released.
 It simplifies the process of handling keyboard input by focusing solely on key events and their associated actions.
 When using mlx_key_hook, you provide a single callback function that will be called whenever a key is pressed or released. 
   This makes it convenient for games and applications where you primarily want to handle keyboard input.
+
+
 int mlx_key_hook(void *win_ptr, int (*funct_ptr)(), void *param);
 
 win_ptr: The window identifier (window pointer) to which the key hook is attached.
